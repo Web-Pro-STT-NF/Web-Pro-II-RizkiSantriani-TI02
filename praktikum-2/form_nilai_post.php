@@ -62,18 +62,26 @@
                     </div>
                 </form>
                 <?php
-                    $proses = $_POST['proses'];
-                    $nama = $_POST['nama'];
-                    $mata_kuliah = $_POST['matkul'];
-                    $nilai_uts = $_POST['nilai_uts'];
-                    $nilai_uas = $_POST['nilai_uas'];
-                    $nilai_tugas = $_POST['nilai_tugas'];
+                    include_once 'libfungsi.php';
+                    $nama= isset($_POST['nama']) ? $_POST['nama'] : '';
+                    $matkul=isset($_POST['matkul']) ? $_POST['matkul'] : '';
+                    $nilai_uts=isset($_POST['nilai_uts']) ? $_POST['nilai_uts'] : '';
+                    $nilai_uas=isset($_POST['nilai_uas']) ? $_POST['nilai_uas'] : '';
+                    $nilai_tugas=isset($_POST['nilai_tugas']) ? $_POST['nilai_tugas'] : '';
 
-                    echo "Nama : $nama";
-                    echo "<br/>Mata Kuiah : $mata_kuliah";
-                    echo "<br/>Nilai UTS : $niali_uts";
-                    echo "<br/>Nilai UAS : $nilai_uas";
-                    echo "<br/>Nilai Tugas : $nilai_tugas";
+                    echo "<br/> Nama Lengkap : $nama" ;
+                    echo "<br/> Mata Kuliah : $matkul" ;
+                    echo "<br/> Nilai UTS : $nilai_uts" ;
+                    echo "<br/> Nilai UAS : $nilai_uas" ;
+                    echo "<br/> Nilai Tugas : $nilai_tugas" ;
+
+                    $nilai_akhir = persentase($nilai_uts, $nilai_uas, $nilai_tugas);
+                    $grade_nilai = grade_nilai($nilai_akhir);
+
+                    echo "<br/> Nilai Akhir : $nilai_akhir";
+                    echo "<br/> Status :", kelulusan($nilai_akhir);
+                    echo "<br/> Grade Nilai :", $grade_nilai;
+                    echo "<br/> Predikat Nilai :", predikat_nilai($grade_nilai);
                 ?>
             </div>
         </div>
