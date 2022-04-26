@@ -54,7 +54,7 @@
                     </div>
                 </form>
                 <?php
-                include_once 'libfungsi.php';
+                    include_once 'libfungsi.php';
                     $nama= isset($_POST['nama']) ? $_POST['nama'] : '';
                     $matkul=isset($_POST['matkul']) ? $_POST['matkul'] : '';
                     $nilai_uts=isset($_POST['nilai_uts']) ? $_POST['nilai_uts'] : '';
